@@ -4,7 +4,7 @@ $data_input='{"region": {"name": "Africa","avgAge": 19.7,"avgDailyIncomeInUSD": 
 $datas=json_decode($data_input);
 $data=array("data"=>$datas);
 $rry=array("estimate"=>array_merge(impact($datas),severe($datas)));
-$result=array_merge($data,$rry);
+$result=array_merge($data,impact($datas),severe($datas));
 $final=json_encode($result); 
 /*if (isset($request->info)) {
   if ($request->info=="json") {
@@ -96,4 +96,5 @@ $node->addChild("$key","$val");
     }}
   return $xml;
 }
+print_r(Covid19ImpactEstimator());
 ?>
