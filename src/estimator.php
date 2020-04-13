@@ -4,11 +4,11 @@
 $datas=json_encode($data_input);
 $datas=json_decode($datas);
 if($datas->periodType=="days"){
-  $timeToElapse=$data->timeToElapse;
+  $timeToElapse=$datas->timeToElapse;
 }else if($datas->periodType=="weeks"){
-  $timeToElapse=($data->timeToElapse)*7;
+  $timeToElapse=($datas->timeToElapse)*7;
 }else{
-  $timeToElapse=($data->timeToElapse)*30;
+  $timeToElapse=($datas->timeToElapse)*30;
 }
 $data=array("data"=>$datas);
 $rry=array("estimate"=>array_merge(impact($datas),severe($datas)));
