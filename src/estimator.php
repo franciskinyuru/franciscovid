@@ -38,6 +38,7 @@ return $xml_info->asXML();
 }}else{
  logs();
  $ke=json_decode($final,true);*/
+ print_r($result);
 return $result;
 }
 function impact($datas,$timeToElapse){
