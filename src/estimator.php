@@ -3,6 +3,13 @@
 //$data_input='{"region": {"name": "Africa","avgAge": 19.7,"avgDailyIncomeInUSD": 4,"avgDailyIncomePopulation": 0.73},"periodType": "days","timeToElapse": 38,"reportedCases": 2747,"population": 92931687,"totalHospitalBeds": 678874}';
 $datas=json_encode($data_input);
 $datas=json_decode($datas);
+if($datas->periodType=="days"){
+  $timeToElapse=$data->timeToElapse;
+}else if($datas->periodType=="weeks"){
+  $timeToElapse=($data->timeToElapse)*7;
+}else{
+  $timeToElapse=($data->timeToElapse)*30;
+}
 $data=array("data"=>$datas);
 $rry=array("estimate"=>array_merge(impact($datas),severe($datas)));
 $result=array_merge($data,impact($datas),severe($datas));
@@ -35,7 +42,7 @@ return $result;
 }
 function impact($datas){
 	$currenlyInfected=(int)$datas->reportedCases*(10);
-	$factor=(int)(((int)$datas->timeToElapse)/3);
+	$factor=(int)(((int)$timeToElapse)/3);
 	$poww=pow(2, $factor);
 	$infectionsByRequestedTime=($currenlyInfected * $poww);
 	$severeCasesByRequestedTime=(int)($infectionsByRequestedTime*0.15);
@@ -51,7 +58,7 @@ return $arrayimpact;
 }
 function severe($datas){
 $currenlyInfected=(int)$datas->reportedCases*(50);	
-$factor=(int)(((int)$datas->timeToElapse)/3);
+$factor=(int)(((int)$timeToElapse)/3);
 	$poww=pow(2, $factor);
 	$infectionsByRequestedTime=($currenlyInfected * $poww);
 	$severeCasesByRequestedTime=$infectionsByRequestedTime*0.15;
