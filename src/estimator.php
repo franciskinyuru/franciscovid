@@ -43,7 +43,7 @@ function impact($datas){
 	$avgDailyIncomePopulation=(int)$datas->region->avgDailyIncomeInUSD;
 	$dollarsInFlight=$datas->region->avgDailyIncomeInUSD*$datas->timeToElapse * $infectionsByRequestedTime*$datas->region->avgDailyIncomePopulation;
 	$arrayimpact['impact']=array(
-'currenlyInfected'=>$currenlyInfected,'infectionsByRequestedTime'=>$infectionsByRequestedTime,'severeCasesByRequestedTime'=>$severeCasesByRequestedTime,
+'currentlyInfected'=>$currenlyInfected,'infectionsByRequestedTime'=>$infectionsByRequestedTime,'severeCasesByRequestedTime'=>$severeCasesByRequestedTime,
 'hospitalBedsByRequestedTim'=>$hospitalBedsByRequestedTime,'casesForICUByRequestedTime'=>$casesForICUByRequestedTime ,'casesForVentilatorsByRequestedTime'=>$casesForVentilatorsByRequestedTime,'dollarsInFlight'=>round($dollarsInFlight,1));
 return $arrayimpact;
 }
@@ -58,7 +58,7 @@ $factor=(int)(((int)$datas->timeToElapse)/3);
 	$casesForVentilatorsByRequestedTime=(int)(0.02*$infectionsByRequestedTime);
 	$avgDailyIncomePopulation=(int)$datas->region->avgDailyIncomeInUSD;
 	$dollarsInFlight=$datas->region->avgDailyIncomeInUSD*$datas->timeToElapse * $infectionsByRequestedTime*$datas->region->avgDailyIncomePopulation;
-$arrayimpact['severeImpact']=array('currenlyInfected'=>$currenlyInfected,'infectionsByRequestedTime'=>$infectionsByRequestedTime,
+$arrayimpact['severeImpact']=array('currentlyInfected'=>$currenlyInfected,'infectionsByRequestedTime'=>$infectionsByRequestedTime,
 'severeCasesByRequestedTime'=>$severeCasesByRequestedTime,'hospitalBedsByRequestedTim'=>$hospitalBedsByRequestedTime,'casesForICUByRequestedTime'=>$casesForICUByRequestedTime,'casesForVentilatorsByRequestedTime'=>$casesForVentilatorsByRequestedTime,'dollarsInFlight'=>round($dollarsInFlight,1));
 return $arrayimpact;
 }
@@ -96,5 +96,5 @@ $node->addChild("$key","$val");
     }}
   return $xml;
 }
-print_r(Covid19ImpactEstimator());
+//print_r(Covid19ImpactEstimator());
 ?>
