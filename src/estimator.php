@@ -53,7 +53,7 @@ function impact($datas,$timeToElapse){
 	$dollarsInFlight=$datas->region->avgDailyIncomeInUSD*$timeToElapse * $infectionsByRequestedTime*$datas->region->avgDailyIncomePopulation;
 	$arrayimpact['impact']=array(
 'currentlyInfected'=>$currenlyInfected,'infectionsByRequestedTime'=>$infectionsByRequestedTime,'severeCasesByRequestedTime'=>$severeCasesByRequestedTime,
-'hospitalBedsByRequestedTim'=>$hospitalBedsByRequestedTime,'casesForICUByRequestedTime'=>$casesForICUByRequestedTime ,'casesForVentilatorsByRequestedTime'=>$casesForVentilatorsByRequestedTime,'dollarsInFlight'=>round($dollarsInFlight,1));
+'hospitalBedsByRequestedTime'=>$hospitalBedsByRequestedTime,'casesForICUByRequestedTime'=>$casesForICUByRequestedTime ,'casesForVentilatorsByRequestedTime'=>$casesForVentilatorsByRequestedTime,'dollarsInFlight'=>round($dollarsInFlight,1));
 return $arrayimpact;
 }
 function severe($datas,$timeToElapse){
@@ -68,7 +68,7 @@ $factor=(int)(((int)$timeToElapse)/3);
 	$avgDailyIncomePopulation=(int)$datas->region->avgDailyIncomeInUSD;
 	$dollarsInFlight=$datas->region->avgDailyIncomeInUSD*$timeToElapse * $infectionsByRequestedTime*$datas->region->avgDailyIncomePopulation;
 $arrayimpact['severeImpact']=array('currentlyInfected'=>$currenlyInfected,'infectionsByRequestedTime'=>$infectionsByRequestedTime,
-'severeCasesByRequestedTime'=>$severeCasesByRequestedTime,'hospitalBedsByRequestedTim'=>$hospitalBedsByRequestedTime,'casesForICUByRequestedTime'=>$casesForICUByRequestedTime,'casesForVentilatorsByRequestedTime'=>$casesForVentilatorsByRequestedTime,'dollarsInFlight'=>round($dollarsInFlight,1));
+'severeCasesByRequestedTime'=>$severeCasesByRequestedTime,'hospitalBedsByRequestedTime'=>$hospitalBedsByRequestedTime,'casesForICUByRequestedTime'=>$casesForICUByRequestedTime,'casesForVentilatorsByRequestedTime'=>$casesForVentilatorsByRequestedTime,'dollarsInFlight'=>round($dollarsInFlight,1));
 return $arrayimpact;
 }
 function logs(){
