@@ -38,7 +38,6 @@ return $xml_info->asXML();
 }}else{
  logs();
  $ke=json_decode($final,true);*/
- print_r($result);
 return $result;
 }
 function impact($datas,$timeToElapse){
@@ -53,7 +52,7 @@ function impact($datas,$timeToElapse){
 	$casesForICUByRequestedTime=(int)($infectionsByRequestedTime*0.05);
 	$casesForVentilatorsByRequestedTime=(int)(0.02*$infectionsByRequestedTime);
 	$avgDailyIncomePopulation=(int)$datas->region->avgDailyIncomeInUSD;
-	$dollarsInFlight=$datas->region->avgDailyIncomeInUSD*$timeToElapse * $infectionsByRequestedTime*$datas->region->avgDailyIncomePopulation;
+	$dollarsInFlight=(int)(($datas->region->avgDailyIncomeInUSD*$infectionsByRequestedTime*$datas->region->avgDailyIncomePopulation)/$timeToElapse);
 	$arrayimpact['impact']=array(
 'currentlyInfected'=>$currenlyInfected,'infectionsByRequestedTime'=>$infectionsByRequestedTime,'severeCasesByRequestedTime'=>$severeCasesByRequestedTime,
 'hospitalBedsByRequestedTime'=>$hospitalBedsByRequestedTime,'casesForICUByRequestedTime'=>$casesForICUByRequestedTime ,'casesForVentilatorsByRequestedTime'=>$casesForVentilatorsByRequestedTime,'dollarsInFlight'=>round($dollarsInFlight,1));
@@ -71,7 +70,7 @@ $factor=(int)(((int)$timeToElapse)/3);
 	$casesForICUByRequestedTime=(int)($infectionsByRequestedTime*0.05);
 	$casesForVentilatorsByRequestedTime=(int)(0.02*$infectionsByRequestedTime);
 	$avgDailyIncomePopulation=(int)$datas->region->avgDailyIncomeInUSD;
-	$dollarsInFlight=$datas->region->avgDailyIncomeInUSD*$timeToElapse * $infectionsByRequestedTime*$datas->region->avgDailyIncomePopulation;
+	$dollarsInFlight=(int)(($datas->region->avgDailyIncomeInUSD*$infectionsByRequestedTime*$datas->region->avgDailyIncomePopulation)/$timeToElapse);
 $arrayimpact['severeImpact']=array('currentlyInfected'=>$currenlyInfected,'infectionsByRequestedTime'=>$infectionsByRequestedTime,
 'severeCasesByRequestedTime'=>$severeCasesByRequestedTime,'hospitalBedsByRequestedTime'=>$hospitalBedsByRequestedTime,'casesForICUByRequestedTime'=>$casesForICUByRequestedTime,'casesForVentilatorsByRequestedTime'=>$casesForVentilatorsByRequestedTime,'dollarsInFlight'=>round($dollarsInFlight,1));
 return $arrayimpact;
