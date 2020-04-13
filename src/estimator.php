@@ -46,7 +46,7 @@ function impact($datas,$timeToElapse){
 	$poww=pow(2, $factor);
 	$infectionsByRequestedTime=($currenlyInfected * $poww);
 	$severeCasesByRequestedTime=(int)($infectionsByRequestedTime*0.15);
-	$val=(0.35*($s1->totalHospitalBeds))-$severeCasesByRequestedTime;
+	$val=(0.35*($datas->totalHospitalBeds))-$severeCasesByRequestedTime;
     if($val<0){$hospitalBedsByRequestedTime=(floor($val*-1)*-1);}
       else{$hospitalBedsByRequestedTime=floor($val);}
 	$casesForICUByRequestedTime=(int)($infectionsByRequestedTime*0.05);
@@ -64,7 +64,7 @@ $factor=(int)(((int)$timeToElapse)/3);
 	$poww=pow(2, $factor);
 	$infectionsByRequestedTime=($currenlyInfected * $poww);
 	$severeCasesByRequestedTime=$infectionsByRequestedTime*0.15;
-	$val=(0.35*($s1->totalHospitalBeds))-$severeCasesByRequestedTime;
+	$val=(0.35*($datas->totalHospitalBeds))-$severeCasesByRequestedTime;
     if($val<0){$hospitalBedsByRequestedTime=(floor($val*-1)*-1);}
       else{$hospitalBedsByRequestedTime=floor($val);}
 	$casesForICUByRequestedTime=(int)($infectionsByRequestedTime*0.05);
