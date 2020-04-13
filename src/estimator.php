@@ -1,6 +1,6 @@
 <?php
- function Covid19ImpactEstimator(){
-$data_input='{"region": {"name": "Africa","avgAge": 19.7,"avgDailyIncomeInUSD": 4,"avgDailyIncomePopulation": 0.73},"periodType": "days","timeToElapse": 38,"reportedCases": 2747,"population": 92931687,"totalHospitalBeds": 678874}';
+ function Covid19ImpactEstimator($data_input){
+//$data_input='{"region": {"name": "Africa","avgAge": 19.7,"avgDailyIncomeInUSD": 4,"avgDailyIncomePopulation": 0.73},"periodType": "days","timeToElapse": 38,"reportedCases": 2747,"population": 92931687,"totalHospitalBeds": 678874}';
 $datas=json_decode($data_input);
 $data=array("data"=>$datas);
 $rry=array("estimate"=>array_merge(impact($datas),severe($datas)));
