@@ -46,7 +46,7 @@ function impact($datas,$timeToElapse){
 	$poww=pow(2, $factor);
 	$infectionsByRequestedTime=($currenlyInfected * $poww);
 	$severeCasesByRequestedTime=(int)($infectionsByRequestedTime*0.15);
-	$hospitalBedsByRequestedTime=(int)(0.35*$datas->totalHospitalBeds-$severeCasesByRequestedTime);
+	$hospitalBedsByRequestedTime=round(((0.35*($datas->totalHospitalBeds)))-$severeCasesByRequestedTime, 0, PHP_ROUND_HALF_DOWN);
 	$casesForICUByRequestedTime=(int)($infectionsByRequestedTime*0.05);
 	$casesForVentilatorsByRequestedTime=(int)(0.02*$infectionsByRequestedTime);
 	$avgDailyIncomePopulation=(int)$datas->region->avgDailyIncomeInUSD;
