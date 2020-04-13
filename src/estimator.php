@@ -12,7 +12,7 @@ if($datas->periodType=="days"){
 }
 $data=array("data"=>$datas);
 $rry=array("estimate"=>array_merge(impact($datas,$timeToElapse),severe($datas,$timeToElapse)));
-$result=array_merge($data,impact($datas),severe($datas));
+$result=array_merge($data,impact($datas,$timeToElapse),severe($datas,$timeToElapse));
 $final=json_encode($result); 
 print_r($data_input);
 /*if (isset($request->info)) {
