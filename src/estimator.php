@@ -14,7 +14,7 @@ $data=array("data"=>$datas);
 $rry=array("estimate"=>array_merge(impact($datas,$timeToElapse),severe($datas,$timeToElapse)));
 $result=array_merge($data,impact($datas,$timeToElapse),severe($datas,$timeToElapse));
 $final=json_encode($result); 
-print_r($data_input);
+print_r($result);
 /*if (isset($request->info)) {
   if ($request->info=="json") {
   	logs();
@@ -62,7 +62,7 @@ $factor=(int)(((int)$timeToElapse)/3);
 	$poww=pow(2, $factor);
 	$infectionsByRequestedTime=($currenlyInfected * $poww);
 	$severeCasesByRequestedTime=$infectionsByRequestedTime*0.15;
-	$hospitalBedsByRequestedTime=(int) (0.35*($datas->totalHospitalBeds))-$severeCasesByRequestedTime;
+	$hospitalBedsByRequestedTime=(0.35*($datas->totalHospitalBeds))-$severeCasesByRequestedTime;
 	$casesForICUByRequestedTime=(int)($infectionsByRequestedTime*0.05);
 	$casesForVentilatorsByRequestedTime=(int)(0.02*$infectionsByRequestedTime);
 	$avgDailyIncomePopulation=(int)$datas->region->avgDailyIncomeInUSD;
